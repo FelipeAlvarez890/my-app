@@ -1,12 +1,10 @@
-import { useState } from 'react';
-import './App.css';
+import { useState, useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 
 function App() {
 
-  const [usuario, setUsuario] = useState ("");
-
-
-  const alumnos = [
+  /*const alumnos = [
     { id: 1, nombre: "Ana", nota: 8 },
     { id: 2, nombre: "Bruno", nota: 5 },
     { id: 3, nombre: "Carla", nota: 9 },
@@ -21,26 +19,56 @@ function App() {
   const desaprobados = alumnos.filter((alumno) => alumno.nota < 6);
   const notaMayorOcho = alumnos.find((alumno) => alumno.nota > 8);
   const nombresAprobados = alumnos.filter((alumno) => alumno.nota >= 6).map((alumno) => alumno.nombre);
-  const nombreNota = alumnos.map((alumno) => alumno.nombre + "-" + "Nota: " + alumno.nota);
+  const nombreNota = alumnos.map((alumno) => alumno.nombre + "-" + "Nota: " + alumno.nota);*/
+
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+ useEffect(() => {
+  if (password === "") {
+    console.log("sin contraseña");
+  }
+  else{
+    console.log("con contraseña")
+  }
+ })
+
+/*function manejarLogin() {
+ if (password === "") {
+ console.log("sin contrasenia");
+ }
+}*/
 
   return (
     <div className="App">
-      {nombresA}
-      <br></br>
+      <div>
+    <Form>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Email</Form.Label>
+        <input
+        type='text'
+        placeholder='Email'
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}>
+        </input>
+      </Form.Group>
 
-      <br></br>
+      <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Label>Password</Form.Label>
+        <input
+        type='password'
+        placeholder='Contraseña'
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}>
+        </input>
+      </Form.Group>
 
-      <br></br>
-      
-      <br></br>
-   
-      <br></br>
-  
-      <br></br>
-
-      <br></br>
-      
-
+      <Button variant="primary" /*onClick={manejarLogin}*/>
+        Login
+      </Button>
+    </Form>
+      </div>
     </div>
   );
 }
